@@ -23,7 +23,9 @@ const ToDo = () => {
           onChange={(event) => setTarea(event.target.value)}
         />
       </form>
-      <button onClick={() => agregarItem()}>Agregar</button>
+      <button style={{ backgroundColor: "red" }} onClick={() => agregarItem()}>
+        Agregar
+      </button>
       <ol>
         {lista.map((item: string) => (
           <li>{item}</li>
