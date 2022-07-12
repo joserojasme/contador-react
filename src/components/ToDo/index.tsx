@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const ToDo = () => {
+const ToDo = ({ initialValue }: { initialValue: string }) => {
   const [tarea, setTarea] = useState("");
-  const [lista, setLista] = useState<Array<string>>([]);
+  const [lista, setLista] = useState<Array<string>>([initialValue]);
 
   const agregarItem = () => {
     if (tarea.length > 0) {
@@ -27,8 +27,10 @@ const ToDo = () => {
         Agregar
       </button>
       <ol>
-        {lista.map((item: string) => (
-          <li>{item}</li>
+        {lista.map((item: string, index: number) => (
+          <li style={{ background: `${(index + 1) % 2 === 0 ? "green" : ""}` }}>
+            {`${item} - ${index + 1}`}
+          </li>
         ))}
       </ol>
     </div>

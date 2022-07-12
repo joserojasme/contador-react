@@ -3,6 +3,7 @@ import ContadorComponent from "../../components/ContadorComponent";
 import Saludo from "../../components/Saludo";
 import PiedraPapelTijera from "../../components/PiedraPapelTijera";
 import ToDo from "../../components/ToDo";
+import ButtonChangeColor from "../../components/ButtonChangeColor";
 
 const Contador = () => {
   const [numeroActual, setNumeroActual] = useState(1);
@@ -11,6 +12,7 @@ const Contador = () => {
   const [seleccionComputador, setSeleccionComputador] = useState("");
   const [nombre, setNombre] = useState("Luisa");
   const arreglo = ["Piedra", "Papel", "Tijera"];
+  const [colorChanged, setColorChanged] = useState<boolean>(false);
 
   useEffect(() => {
     if (seleccion.length > 0 && contador >= 0) {
@@ -32,6 +34,10 @@ const Contador = () => {
 
   return (
     <div>
+      <ButtonChangeColor
+        colorChanged={colorChanged}
+        setColorChanged={setColorChanged}
+      />
       <Saludo mensajeSaludo="Hola" nombre={nombre} />
       <ContadorComponent
         numeroActual={numeroActual}
@@ -44,7 +50,7 @@ const Contador = () => {
         seleccionComputador={seleccionComputador}
         setNombre={setNombre}
       />
-      <ToDo />
+      <ToDo initialValue="Luisa" />
     </div>
   );
 };
